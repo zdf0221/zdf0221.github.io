@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClawServe 钳瑟夫 - OpenClaw 智能服务专家</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ocean: { 900: '#0A2540', 800: '#1A365D', 600: '#3182CE' },
+                        lobster: { DEFAULT: '#FF6B6B', dark: '#E55A5A' },
+                        coral: '#FF8C42', gold: '#FFD700'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-800 antialiased">
+    <!-- Nav -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-br from-lobster to-coral rounded-xl flex items-center justify-center">
+                        <i class="fas fa-robot text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold text-ocean-900"><span class="text-lobster">Claw</span>Serve <span class="text-sm text-gray-500">钳瑟夫</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#services" class="text-gray-700 hover:text-lobster">服务</a>
+                    <a href="#pricing" class="text-gray-700 hover:text-lobster">价格</a>
+                    <button onclick="document.getElementById('contact-modal').classList.remove('hidden')" class="bg-lobster text-white px-5 py-2 rounded-lg">立即咨询</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative min-h-screen flex items-center justify-center pt-16 bg-gradient-to-br from-ocean-900 via-ocean-800 to-ocean-600">
+        <div class="absolute bottom-0 left-0 right-0"><svg viewBox="0 0 1440 320" class="w-full"><path fill="#F7FAFC" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg></div>
+        <div class="relative z-10 text-center px-4">
+            <div class="inline-block p-4 rounded-full bg-white/10 backdrop-blur mb-8">
+                <i class="fas fa-robot text-6xl text-lobster"></i>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">基于 <span class="text-coral">OpenClaw</span> 的<br>智能服务专家</h1>
+            <p class="text-xl text-blue-100 mb-8">部署 · 托管 · 运维 · 一站式解决方案</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#pricing" class="bg-lobster text-white px-8 py-4 rounded-xl font-semibold">查看套餐</a>
+                <button onclick="document.getElementById('contact-modal').classList.remove('hidden')" class="bg-white/10 text-white border border-white/30 px-8 py-4 rounded-xl font-semibold">立即咨询</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-ocean-900 mb-4">核心服务</h2>
+                <p class="text-lg text-gray-600">专注于 OpenClaw 生态，全方位技术保障</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-lobster/10 rounded-xl flex items-center justify-center mb-6"><i class="fas fa-rocket text-2xl text-lobster"></i></div>
+                    <h3 class="text-xl font-bold text-ocean-900 mb-3">智能部署</h3>
+                    <p class="text-gray-600">快速部署 OpenClaw 环境，一键启动。支持多平台、多环境配置。</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-coral/10 rounded-xl flex items-center justify-center mb-6"><i class="fas fa-cloud text-2xl text-coral"></i></div>
+                    <h3 class="text-xl font-bold text-ocean-900 mb-3">稳定托管</h3>
+                    <p class="text-gray-600">7×24小时云端托管，99.9%可用性保障，专业运维团队全天候监控。</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-ocean-600/10 rounded-xl flex items-center justify-center mb-6"><i class="fas fa-tools text-2xl text-ocean-600"></i></div>
+                    <h3 class="text-xl font-bold text-ocean-900 mb-3">专业运维</h3>
+                    <p class="text-gray-600">监控、备份、升级全包服务。从日常维护到紧急排障全覆盖。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-ocean-900 mb-4">价格方案</h2>
+                <p class="text-lg text-gray-600 mb-8">灵活的定价方案，满足不同规模需求</p>
+                <div class="inline-flex bg-gray-100 rounded-full p-1">
+                    <button onclick="setCurrency('CNY')" id="btn-cny" class="px-6 py-2 rounded-full bg-white shadow-sm text-ocean-900 font-medium">¥ CNY</button>
+                    <button onclick="setCurrency('USD')" id="btn-usd" class="px-6 py-2 rounded-full text-gray-500 font-medium">$ USD</button>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 items-start">
+                <!-- Starter -->
+                <div class="bg-white rounded-2xl border-2 border-gray-100 p-8 hover:border-lobster/30 transition-all hover:-translate-y-1">
+                    <h3 class="text-xl font-bold text-ocean-900 mb-2">Starter 入门版</h3>
+                    <p class="text-gray-500 text-sm mb-6">个人开发者、小型团队</p>
+                    <div class="mb-6"><span class="text-4xl font-bold text-ocean-900 price" data-cny="299" data-usd="49">¥299</span><span class="text-gray-500">/月</span></div>
+                    <ul class="space-y-3 mb-8 text-gray-600">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>OpenClaw 单实例部署</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>基础监控告警</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>邮件技术支持</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>每月 1 次备份</li>
+                    </ul>
+                    <button onclick="document.getElementById('contact-modal').classList.remove('hidden')" class="w-full py-3 border-2 border-lobster text-lobster font-semibold rounded-xl hover:bg-lobster hover:text-white transition-all">选择入门版</button>
+                </div>
+                <!-- Professional -->
+                <div class="relative bg-ocean-900 rounded-2xl p-8 transform md:scale-105 shadow-2xl">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2"><span class="bg-gradient-to-r from-gold to-yellow-400 text-ocean-900 px-4 py-1 rounded-full text-sm font-bold"><i class="fas fa-star mr-1"></i>最受欢迎</span></div>
+                    <h3 class="text-xl font-bold text-white mb-2 pt-2">Professional 专业版</h3>
+                    <p class="text-blue-200 text-sm mb-6">成长型企业、多Agent场景</p>
+                    <div class="mb-6"><span class="text-4xl font-bold text-white price" data-cny="799" data-usd="129">¥799</span><span class="text-blue-200">/月</span></div>
+                    <ul class="space-y-3 mb-8 text-blue-100">
+                        <li><i class="fas fa-check text-coral mr-2"></i>OpenClaw 多实例部署</li>
+                        <li><i class="fas fa-check text-coral mr-2"></i>高级监控 + 自定义告警</li>
+                        <li><i class="fas fa-check text-coral mr-2"></i>多Agent协调配置</li>
+                        <li><i class="fas fa-check text-coral mr-2"></i>每周 3 次备份</li>
+                        <li><i class="fas fa-check text-coral mr-2"></i>飞书/Slack 技术支持</li>
+                    </ul>
+                    <button onclick="document.getElementById('contact-modal').classList.remove('hidden')" class="w-full py-3 bg-gradient-to-r from-lobster to-coral text-white font-semibold rounded-xl hover:shadow-lg transition-all">选择专业版</button>
+                </div>
+                <!-- Enterprise -->
+                <div class="bg-white rounded-2xl border-2 border-gray-100 p-8 hover:border-ocean-600/30 transition-all hover:-translate-y-1">
+                    <h3 class="text-xl font-bold text-ocean-900 mb-2">Enterprise 企业版</h3>
+                    <p class="text-gray-500 text-sm mb-6">大型企业、复杂业务场景</p>
+                    <div class="mb-6"><span class="text-4xl font-bold text-ocean-900 price" data-cny="2499" data-usd="399">¥2499</span><span class="text-gray-500">/月</span></div>
+                    <ul class="space-y-3 mb-8 text-gray-600">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>高可用集群部署</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>专属技术支持团队</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>多Agent深度定制开发</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>每日自动备份 + 异地容灾</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>7×24小时电话支持</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>优先功能迭代</li>
+                    </ul>
+                    <button onclick="document.getElementById('contact-modal').classList.remove('hidden')" class="w-full py-3 border-2 border-ocean-600 text-ocean-600 font-semibold rounded-xl hover:bg-ocean-600 hover:text-white transition-all">联系销售</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-ocean-900 mb-4">OpenClaw 多Agent 定向技术支持</h2>
+                <p class="text-gray-600">不仅是运维服务，更是您的技术合作伙伴</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center"><i class="fas fa-sitemap text-3xl text-lobster mb-4"></i><h4 class="font-semibold text-ocean-900 mb-2">架构设计咨询</h4><p class="text-sm text-gray-500">最优多Agent协作架构</p></div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center"><i class="fas fa-code text-3xl text-coral mb-4"></i><h4 class="font-semibold text-ocean-900 mb-2">Skill 开发</h4><p class="text-sm text-gray-500">定制化 Skill 开发</p></div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center"><i class="fas fa-tachometer-alt text-3xl text-ocean-600 mb-4"></i><h4 class="font-semibold text-ocean-900 mb-2">性能优化</h4><p class="text-sm text-gray-500">深度诊断与调优</p></div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center"><i class="fas fa-chalkboard-teacher text-3xl text-green-600 mb-4"></i><h4 class="font-semibold text-ocean-900 mb-2">企业内训</h4><p class="text-sm text-gray-500">团队技能提升培训</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment -->
+    <section class="py-12 bg-white border-t">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h3 class="text-lg font-semibold text-ocean-900 mb-6">支持多种支付方式</h3>
+            <div class="flex flex-wrap justify-center gap-6">
+                <span class="px-4 py-2 bg-gray-50 rounded-lg text-blue-600 font-bold">PayPal</span>
+                <span class="px-4 py-2 bg-gray-50 rounded-lg text-purple-600 font-bold">Stripe</span>
+                <span class="px-4 py-2 bg-gray-50 rounded-lg text-blue-800 font-bold">Visa</span>
+                <span class="px-4 py-2 bg-gray-50 rounded-lg text-orange-600 font-bold">Mastercard</span>
+                <span class="px-4 py-2 bg-gray-50 rounded-lg text-blue-500 font-bold">支付宝</span>
+                <span class="px-4 py-2 bg-gray-50 rounded-lg text-green-500 font-bold">微信支付</span>
+            </div>
+            <p class="text-gray-400 text-sm mt-4"><i class="fas fa-shield-alt mr-1"></i>安全支付 · 即时开通 · 随时退款</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-ocean-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <div class="w-10 h-10 bg-gradient-to-br from-lobster to-coral rounded-xl flex items-center justify-center"><i class="fas fa-robot text-white text-xl"></i></div>
+                    <span class="text-xl font-bold"><span class="text-lobster">Claw</span>Serve <span class="text-gray-400">钳瑟夫</span></span>
+                </div>
+                <div class="flex space-x-6 text-blue-200">
+                    <a href="mailto:hello@clawserve.com" class="hover:text-white"><i class="fas fa-envelope mr-2"></i>hello@clawserve.com</a>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-8 pt-8 text-center text-blue-300 text-sm">
+                © 2026 ClawServe 钳瑟夫. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="fixed inset-0 z-50 hidden" onclick="if(event.target===this)this.classList.add('hidden')">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <div class="relative min-h-screen flex items-center justify-center p-4">
+            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
+                <button onclick="document.getElementById('contact-modal').classList.add('hidden')" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100"><i class="fas fa-times text-gray-500"></i></button>
+                <div class="text-center mb-6">
+                    <div class="w-16 h-16 bg-lobster/10 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-paper-plane text-2xl text-lobster"></i></div>
+                    <h3 class="text-2xl font-bold text-ocean-900">联系我们</h3>
+                    <p class="text-gray-500 text-sm">填写信息，我们将尽快与您联系</p>
+                </div>
+                <form onsubmit="event.preventDefault();alert('感谢您的咨询！我们会尽快与您联系。');this.reset();document.getElementById('contact-modal').classList.add('hidden');">
+                    <div class="space-y-4">
+                        <input type="text" required placeholder="姓名 *" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-lobster">
+                        <input type="email" required placeholder="邮箱 *" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-lobster">
+                        <input type="text" placeholder="公司" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-lobster">
+                        <textarea rows="3" placeholder="需求描述" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-lobster resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full mt-6 bg-lobster hover:bg-lobster-dark text-white py-3 rounded-xl font-semibold transition-all">提交咨询</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white/95', 'backdrop-blur', 'shadow-sm');
+            } else {
+                navbar.classList.remove('bg-white/95', 'backdrop-blur', 'shadow-sm');
+            }
+        });
+
+        // Currency toggle
+        function setCurrency(curr) {
+            document.querySelectorAll('.price').forEach(el => {
+                el.textContent = curr === 'CNY' ? '¥' + el.dataset.cny : '$' + el.dataset.usd;
+            });
+            document.getElementById('btn-cny').className = curr === 'CNY' ? 'px-6 py-2 rounded-full bg-white shadow-sm text-ocean-900 font-medium' : 'px-6 py-2 rounded-full text-gray-500 font-medium';
+            document.getElementById('btn-usd').className = curr === 'USD' ? 'px-6 py-2 rounded-full bg-white shadow-sm text-ocean-900 font-medium' : 'px-6 py-2 rounded-full text-gray-500 font-medium';
+        }
+    </script>
+</body>
+</html>
