@@ -238,9 +238,10 @@
     <div id="contact-modal" class="fixed inset-0 z-50 hidden" onclick="if(event.target===this)this.classList.add('hidden')">
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
         <div class="relative min-h-screen flex items-center justify-center p-4">
-            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
-                <button onclick="document.getElementById('contact-modal').classList.add('hidden')" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100">
-                    <i class="fas fa-times text-gray-500"></i>
+            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 relative">
+                <!-- Close Button - Top Right -->
+                <button onclick="document.getElementById('contact-modal').classList.add('hidden')" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors" title="关闭">
+                    <i class="fas fa-times text-gray-500 text-lg"></i>
                 </button>
                 
                 <div class="text-center mb-6">
@@ -252,26 +253,28 @@
                 </div>
 
                 <!-- Phone -->
-                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl mb-4">
-                    <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                <a href="tel:+8613840085917" class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl mb-4 hover:bg-lobster/5 transition-colors group">
+                    <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                         <i class="fas fa-phone text-white text-lg"></i>
                     </div>
                     <div>
                         <div class="text-sm text-gray-500">电话咨询</div>
-                        <a href="tel:+8613840085917" class="text-xl font-bold text-ocean-900 hover:text-lobster transition-colors">+86 138 4008 5917</a>
+                        <div class="text-xl font-bold text-ocean-900 group-hover:text-lobster transition-colors">+86 138 4008 5917</div>
                     </div>
-                </div>
+                    <i class="fas fa-chevron-right text-gray-300 ml-auto"></i>
+                </a>
 
                 <!-- Email -->
-                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl mb-4">
-                    <div class="w-12 h-12 bg-lobster rounded-lg flex items-center justify-center flex-shrink-0">
+                <a href="mailto:hello@clawserve.com" class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl mb-4 hover:bg-lobster/5 transition-colors group">
+                    <div class="w-12 h-12 bg-lobster rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                         <i class="fas fa-envelope text-white text-lg"></i>
                     </div>
                     <div>
                         <div class="text-sm text-gray-500">邮件联系</div>
-                        <a href="mailto:hello@clawserve.com" class="text-lg font-semibold text-ocean-900 hover:text-lobster transition-colors">hello@clawserve.com</a>
+                        <div class="text-lg font-semibold text-ocean-900 group-hover:text-lobster transition-colors">hello@clawserve.com</div>
                     </div>
-                </div>
+                    <i class="fas fa-chevron-right text-gray-300 ml-auto"></i>
+                </a>
 
                 <!-- WeChat -->
                 <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl mb-6">
@@ -280,22 +283,35 @@
                     </div>
                     <div>
                         <div class="text-sm text-gray-500">微信咨询</div>
-                        <span class="text-lg font-semibold text-ocean-900">ClawServe</span>
+                        <div class="text-lg font-semibold text-ocean-900">ClawServe</div>
                     </div>
                 </div>
 
                 <!-- Business Hours -->
-                <div class="border-t border-gray-100 pt-4 text-center">
+                <div class="border-t border-gray-100 pt-4 text-center mb-4">
                     <p class="text-sm text-gray-500">
                         <i class="fas fa-clock text-lobster mr-2"></i>
                         服务时间：周一至周五 9:00-18:00
                     </p>
                 </div>
+
+                <!-- Back Button -->
+                <button onclick="document.getElementById('contact-modal').classList.add('hidden')" class="w-full py-3 border-2 border-gray-200 text-gray-600 font-semibold rounded-xl hover:border-lobster hover:text-lobster transition-all flex items-center justify-center gap-2">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>返回</span>
+                </button>
             </div>
         </div>
     </div>
 
     <script>
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('contact-modal').classList.add('hidden');
+            }
+        });
+
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');

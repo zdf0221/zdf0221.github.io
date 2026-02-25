@@ -21,6 +21,10 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 
+# Include additional files
+include:
+  - orchestration.html
+
 # Exclude files
 exclude:
   - .sass-cache/
@@ -30,3 +34,4 @@ exclude:
   - Gemfile.lock
   - node_modules/
   - vendor/
+  - README.md
