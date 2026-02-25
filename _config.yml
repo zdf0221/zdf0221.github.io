@@ -1,7 +1,9 @@
 # ClawServe Jekyll Configuration
 title: ClawServe 钳瑟夫
 description: 基于 OpenClaw 的智能服务专家
-theme: minima
+
+# Disable Jekyll processing for pure HTML files
+# This makes GitHub Pages serve files as-is
 
 # Site Settings
 baseurl: ""
