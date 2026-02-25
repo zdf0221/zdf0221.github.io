@@ -34,6 +34,7 @@
                 <div class="hidden md:flex space-x-8">
                     <a href="#services" class="text-gray-700 hover:text-lobster">服务</a>
                     <a href="#pricing" class="text-gray-700 hover:text-lobster">价格</a>
+                    <a href="orchestration.html" class="text-gray-700 hover:text-lobster">架构示例</a>
                     <button onclick="document.getElementById('contact-modal').classList.remove('hidden')" class="bg-lobster text-white px-5 py-2 rounded-lg">立即咨询</button>
                 </div>
             </div>
@@ -78,6 +79,47 @@
                     <div class="w-14 h-14 bg-ocean-600/10 rounded-xl flex items-center justify-center mb-6"><i class="fas fa-tools text-2xl text-ocean-600"></i></div>
                     <h3 class="text-xl font-bold text-ocean-900 mb-3">专业运维</h3>
                     <p class="text-gray-600">监控、备份、升级全包服务。从日常维护到紧急排障全覆盖。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Multi-Agent Orchestration Preview -->
+    <section class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-ocean-900 mb-4">多Agent Orchestration</h2>
+                    <p class="text-gray-600 mb-6">基于 OpenClaw 的多Agent协作架构，让多个智能体高效协同工作，处理复杂任务。</p>
+                    <ul class="space-y-3 mb-8 text-gray-600">
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-lobster"></i>智能任务分配与调度</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-lobster"></i>Agent间高效通信</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-lobster"></i>自动故障转移与恢复</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-lobster"></i>可扩展的Skill系统</li>
+                    </ul>
+                    <a href="orchestration.html" class="inline-flex items-center gap-2 bg-ocean-600 hover:bg-ocean-700 text-white px-6 py-3 rounded-xl font-semibold transition-all">
+                        <span>查看架构示例</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="bg-gradient-to-br from-ocean-800 to-ocean-900 rounded-2xl p-8 text-white">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-project-diagram text-5xl text-coral"></i>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 bg-white/10 rounded-lg p-4">
+                            <div class="w-10 h-10 bg-lobster rounded-full flex items-center justify-center"><i class="fas fa-chess-king"></i></div>
+                            <div><div class="font-semibold">协调器 (Coordinator)</div><div class="text-sm text-blue-200">任务分配与结果聚合</div></div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white/10 rounded-lg p-4">
+                            <div class="w-10 h-10 bg-coral rounded-full flex items-center justify-center"><i class="fas fa-robot"></i></div>
+                            <div><div class="font-semibold">Agent 集群</div><div class="text-sm text-blue-200">多个专业智能体协作</div></div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white/10 rounded-lg p-4">
+                            <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center"><i class="fas fa-puzzle-piece"></i></div>
+                            <div><div class="font-semibold">Skill 系统</div><div class="text-sm text-blue-200">可插拔功能模块</div></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -192,26 +234,63 @@
         </div>
     </footer>
 
-    <!-- Contact Modal -->
+    <!-- Contact Modal - Direct Contact Info -->
     <div id="contact-modal" class="fixed inset-0 z-50 hidden" onclick="if(event.target===this)this.classList.add('hidden')">
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
         <div class="relative min-h-screen flex items-center justify-center p-4">
             <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
-                <button onclick="document.getElementById('contact-modal').classList.add('hidden')" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100"><i class="fas fa-times text-gray-500"></i></button>
+                <button onclick="document.getElementById('contact-modal').classList.add('hidden')" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100">
+                    <i class="fas fa-times text-gray-500"></i>
+                </button>
+                
                 <div class="text-center mb-6">
-                    <div class="w-16 h-16 bg-lobster/10 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-paper-plane text-2xl text-lobster"></i></div>
-                    <h3 class="text-2xl font-bold text-ocean-900">联系我们</h3>
-                    <p class="text-gray-500 text-sm">填写信息，我们将尽快与您联系</p>
-                </div>
-                <form onsubmit="event.preventDefault();alert('感谢您的咨询！我们会尽快与您联系。');this.reset();document.getElementById('contact-modal').classList.add('hidden');">
-                    <div class="space-y-4">
-                        <input type="text" required placeholder="姓名 *" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-lobster">
-                        <input type="email" required placeholder="邮箱 *" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-lobster">
-                        <input type="text" placeholder="公司" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-lobster">
-                        <textarea rows="3" placeholder="需求描述" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-lobster resize-none"></textarea>
+                    <div class="w-16 h-16 bg-lobster/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-headset text-2xl text-lobster"></i>
                     </div>
-                    <button type="submit" class="w-full mt-6 bg-lobster hover:bg-lobster-dark text-white py-3 rounded-xl font-semibold transition-all">提交咨询</button>
-                </form>
+                    <h3 class="text-2xl font-bold text-ocean-900">联系我们</h3>
+                    <p class="text-gray-500 text-sm">有任何问题？随时联系我们</p>
+                </div>
+
+                <!-- Phone -->
+                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl mb-4">
+                    <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-phone text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <div class="text-sm text-gray-500">电话咨询</div>
+                        <a href="tel:+8613840085917" class="text-xl font-bold text-ocean-900 hover:text-lobster transition-colors">+86 138 4008 5917</a>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl mb-4">
+                    <div class="w-12 h-12 bg-lobster rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-envelope text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <div class="text-sm text-gray-500">邮件联系</div>
+                        <a href="mailto:hello@clawserve.com" class="text-lg font-semibold text-ocean-900 hover:text-lobster transition-colors">hello@clawserve.com</a>
+                    </div>
+                </div>
+
+                <!-- WeChat -->
+                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl mb-6">
+                    <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fab fa-weixin text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <div class="text-sm text-gray-500">微信咨询</div>
+                        <span class="text-lg font-semibold text-ocean-900">ClawServe</span>
+                    </div>
+                </div>
+
+                <!-- Business Hours -->
+                <div class="border-t border-gray-100 pt-4 text-center">
+                    <p class="text-sm text-gray-500">
+                        <i class="fas fa-clock text-lobster mr-2"></i>
+                        服务时间：周一至周五 9:00-18:00
+                    </p>
+                </div>
             </div>
         </div>
     </div>

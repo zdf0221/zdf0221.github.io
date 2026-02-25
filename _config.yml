@@ -1,0 +1,32 @@
+# ClawServe Jekyll Configuration
+title: ClawServe 钳瑟夫
+description: 基于 OpenClaw 的智能服务专家
+theme: minima
+
+# Site Settings
+baseurl: ""
+url: "https://zdf0221.github.io"
+
+# Contact Info
+phone: "+86 13840085917"
+email: "hello@clawserve.com"
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Exclude files
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/

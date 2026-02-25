@@ -1,0 +1,262 @@
+---
+layout: default
+title: 多Agent Orchestration
+permalink: /orchestration/
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多Agent Orchestration - ClawServe 钳瑟夫</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ocean: { 900: '#0A2540', 800: '#1A365D', 700: '#2C5282', 600: '#3182CE' },
+                        lobster: { DEFAULT: '#FF6B6B', dark: '#E55A5A' },
+                        coral: '#FF8C42', gold: '#FFD700'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .mermaid { background: transparent !important; }
+        .mermaid svg { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased bg-gray-50">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="/" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-br from-lobster to-coral rounded-xl flex items-center justify-center">
+                        <i class="fas fa-robot text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold text-ocean-900">
+                        <span class="text-lobster">Claw</span>Serve
+                        <span class="text-sm text-gray-500 ml-1">钳瑟夫</span>
+                    </span>
+                </a>
+                <a href="/" class="text-gray-700 hover:text-lobster transition-colors">
+                    <i class="fas fa-arrow-left mr-2"></i>返回首页
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="pt-32 pb-12 bg-gradient-to-br from-ocean-900 via-ocean-800 to-ocean-600">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-3xl md:text-5xl font-bold text-white mb-4">多Agent Orchestration</h1>
+            <p class="text-xl text-blue-100">OpenClaw 多Agent协作架构示例</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Architecture Diagram -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
+                <h2 class="text-2xl font-bold text-ocean-900 mb-6 text-center">系统架构图</h2>
+                <div class="mermaid flex justify-center">
+flowchart TB
+    subgraph UserLayer["👤 用户层"]
+        U1[Web用户]
+        U2[移动端用户]
+        U3[API调用方]
+    end
+
+    subgraph GatewayLayer["🌐 网关层"]
+        LB[负载均衡]
+        GW[OpenClaw Gateway]
+    end
+
+    subgraph AgentLayer["🤖 Agent层"]
+        subgraph Coordination["协调器集群"]
+            C1[主协调器]
+            C2[备用协调器]
+        end
+        
+        subgraph Agents["Agent集群"]
+            A1[QingZhou<br/>架构师]
+            A2[Mesh<br/>开发者]
+            A3[XiaoAi<br/>分析师]
+            A4[TaskAgent<br/>任务执行]
+        end
+    end
+
+    subgraph ServiceLayer["⚙️ 服务层"]
+        S1[Skill执行器]
+        S2[知识库检索]
+        S3[外部API]
+        S4[定时任务]
+    end
+
+    subgraph DataLayer["💾 数据层"]
+        DB1[(SQLite/PostgreSQL)]
+        DB2[(Redis缓存)]
+        DB3[(文件存储)]
+    end
+
+    U1 --> LB
+    U2 --> LB
+    U3 --> LB
+    LB --> GW
+    GW --> C1
+    GW --> C2
+    
+    C1 --> A1
+    C1 --> A2
+    C2 --> A3
+    C2 --> A4
+    
+    A1 --> S1
+    A2 --> S2
+    A3 --> S3
+    A4 --> S4
+    
+    S1 --> DB1
+    S2 --> DB2
+    S3 --> DB3
+    S4 --> DB1
+
+    style Coordination fill:#FF6B6B,stroke:#E55A5A,color:#fff
+    style Agents fill:#3182CE,stroke:#2C5282,color:#fff
+    style ServiceLayer fill:#FF8C42,stroke:#E55A5A,color:#fff
+                </div>
+            </div>
+
+            <!-- Workflow Diagram -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
+                <h2 class="text-2xl font-bold text-ocean-900 mb-6 text-center">工作流程</h2>
+                <div class="mermaid flex justify-center">
+sequenceDiagram
+    actor User as 用户
+    participant GW as Gateway
+    participant Coord as 协调器
+    participant A1 as QingZhou
+    participant A2 as Mesh
+    participant DB as 数据库
+    participant Ext as 外部服务
+
+    User->>GW: 提交任务请求
+    GW->>Coord: 路由到协调器
+    Coord->>A1: 分配任务给架构师
+    A1->>DB: 查询历史记录
+    A1->>Coord: 返回任务拆解方案
+    
+    par 并行执行
+        Coord->>A2: 分配子任务1
+        A2->>Ext: 调用外部API
+        A2->>DB: 存储结果
+    and
+        Coord->>A1: 分配子任务2
+        A1->>DB: 查询配置
+        A1->>Coord: 返回中间结果
+    end
+    
+    Coord->>Coord: 聚合结果
+    Coord->>GW: 返回最终响应
+    GW->>User: 返回处理结果
+                </div>
+            </div>
+
+            <!-- Communication Patterns -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
+                <h2 class="text-2xl font-bold text-ocean-900 mb-6 text-center">通信模式</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="border border-gray-200 rounded-xl p-6 text-center hover:shadow-lg transition-all">
+                        <div class="w-16 h-16 bg-ocean-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-broadcast-tower text-2xl text-ocean-600"></i>
+                        </div>
+                        <h3 class="font-bold text-ocean-900 mb-2">广播模式</h3>
+                        <p class="text-gray-600 text-sm">协调器将任务广播给所有Agent，收集多个响应后聚合</p>
+                    </div>
+                    <div class="border border-gray-200 rounded-xl p-6 text-center hover:shadow-lg transition-all">
+                        <div class="w-16 h-16 bg-lobster/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-link text-2xl text-lobster"></i>
+                        </div>
+                        <h3 class="font-bold text-ocean-900 mb-2">链式模式</h3>
+                        <p class="text-gray-600 text-sm">Agent按顺序处理，每个Agent的输出作为下一个的输入</p>
+                    </div>
+                    <div class="border border-gray-200 rounded-xl p-6 text-center hover:shadow-lg transition-all">
+                        <div class="w-16 h-16 bg-coral/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-project-diagram text-2xl text-coral"></i>
+                        </div>
+                        <h3 class="font-bold text-ocean-900 mb-2">路由模式</h3>
+                        <p class="text-gray-600 text-sm">根据任务类型路由到专门的Agent处理</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Components -->
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl font-bold text-ocean-900 mb-6 text-center">核心组件</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-gray-50 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-ocean-600 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-server text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-ocean-900 mb-2">OpenClaw Gateway</h4>
+                        <p class="text-gray-600 text-sm">统一入口，处理认证、路由、限流</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-lobster rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-chess-king text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-ocean-900 mb-2">协调器 (Coordinator)</h4>
+                        <p class="text-gray-600 text-sm">任务分配、状态监控、结果聚合</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-coral rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-robot text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-ocean-900 mb-2">Agent 集群</h4>
+                        <p class="text-gray-600 text-sm">执行具体任务的智能体集合</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-6">
+                        <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-puzzle-piece text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-ocean-900 mb-2">Skill 系统</h4>
+                        <p class="text-gray-600 text-sm">可插拔的功能模块，扩展Agent能力</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-ocean-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-blue-300 text-sm">
+                © 2026 ClawServe 钳瑟夫. All rights reserved. | 
+                <a href="/" class="text-lobster hover:text-white">返回首页</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: { 
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>
